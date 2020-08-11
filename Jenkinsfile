@@ -1,16 +1,23 @@
 pipeline {
     agent any
-    stages {
-        stage('Example Build') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-        stage('Example Deploy') {
-            when { not { branch 'master' } }
-            steps {
-                echo 'Deploying'
+    matrix {
+    axes {
+        axis {
+            name 'PLATFORM'
+            values 'linux', 'mac', 'windows'
             }
         }
     }
+    stages {
+        stage('build') {
+            echo 'building ...'
+        }
+        stage('test') {
+            echo 'testing ...'
+        }
+        stage('deploy') {
+            echo 'deploying ...'
+        }
+    }
+    
 }
