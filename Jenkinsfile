@@ -4,7 +4,12 @@ pipeline {
         stage('Test') {
             steps {
                 retry(3) {
-                     sh 'echo "Success!" exit 0'
+                     sh '''
+                        echo "Multiline shell steps works too"
+                        ls -lah
+                        echo "Success!" exit 0
+                        '''
+                     
                 }
             }
         }
