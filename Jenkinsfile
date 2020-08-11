@@ -13,6 +13,9 @@ pipeline {
     }
     stages {
         stage('Example') {
+            when {
+                branch 'master'
+            }
             steps {
                 echo "Hello ${params.PERSON}"
 
